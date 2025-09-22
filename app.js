@@ -31,6 +31,8 @@ app.use(
 require("./config/passport");
 app.use(passport.session());
 
+
+
 app.use((err, _, res, __) => {
   console.error(err);
   res.status(err.statusCode || 500).send(err.message);
