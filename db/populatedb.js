@@ -1,7 +1,26 @@
 const { argv } = require("node:process");
 const { Client } = require("pg");
-const fs = require("node:fs/promises");
-const path = require("node:path");
+
+const SQL = `
+  CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+  CREATE TABLE IF NOT EXISTS "user" (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    fullname TEXT, 
+    username TEXT,
+    password TEXT,
+    member BOOLEAN,
+    admin BOOLEAN
+  );
+
+  CREATE TABLE IF NOT EXISTS post (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    title TEXT,
+    content TEXT,
+    user_id UUID REFERENCES "user" ON DELETE SET NULL (user_id),
+    "timestamp" TIMESTAMPTZ
+  );
+`;
 
 async function main() {
   console.log("seeding...");
@@ -9,9 +28,6 @@ async function main() {
     connectionString: argv[2],
   });
   await client.connect();
-  const SQL = await fs.readFile(path.join(__dirname, "populatedb.sql"), {
-    encoding: "utf8",
-  });
   await client.query(SQL);
   await client.end();
   console.log("done");
