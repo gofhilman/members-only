@@ -1,15 +1,12 @@
 const passport = require("passport");
 const pool = require("../db/pool");
+const { getUserByUsername, getUserById } = require("../db/queries");
 const LocalStrategy = require("passport-local").Strategy;
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      const { rows } = await pool.query(
-        `SELECT * FROM "user" WHERE username = $1;`,
-        [username]
-      );
-      const user = rows[0];
+      const user = getUserByUsername(username);
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
@@ -30,10 +27,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const { rows } = await pool.query(`SELECT * FROM "user" WHERE id = $1;`, [
-      id,
-    ]);
-    const user = rows[0];
+    const user = getUserById(id);
     done(null, user);
   } catch (err) {
     done(err);

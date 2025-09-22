@@ -5,6 +5,7 @@ const session = require("express-session");
 const PgStore = require("connect-pg-simple")(session);
 const pool = require("./db/pool");
 const passport = require("passport");
+const indexRouter = require("./routes/indexRouter");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -31,7 +32,7 @@ app.use(
 require("./config/passport");
 app.use(passport.session());
 
-
+app.use(indexRouter);
 
 app.use((err, _, res, __) => {
   console.error(err);
