@@ -1,7 +1,14 @@
-function isAuth() {}
+function isAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res
+      .status(401)
+      .render("main-layout", {
+        page: "unauthorized-access",
+        title: "Unauthorized Access",
+      });
+  }
+}
 
-function isMember() {}
-
-function isAdmin() {}
-
-module.exports = { isAuth, isMember, isAdmin };
+module.exports = isAuth;
