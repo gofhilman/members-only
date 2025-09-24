@@ -41,16 +41,6 @@ async function adminFormGet(_, res) {
 }
 
 async function postDeletePost(req, res) {
-  const posts = await getAllPosts();
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).render("main-layout", {
-      posts,
-      page: "index",
-      title: "Home",
-      errors: errors.array(),
-    });
-  }
   const { postId } = req.params;
   await deletePost(postId);
   res.redirect("/");
@@ -71,6 +61,14 @@ async function postFormPost(req, res) {
 }
 
 async function loginFormPost(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render("main-layout", {
+      page: "login",
+      title: "Login",
+      errors: errors.array(),
+    });
+  }
   passport.authenticate("local", (err, user, info) => {
     if (err) return next(err);
     if (!user) {
@@ -88,6 +86,14 @@ async function loginFormPost(req, res, next) {
 }
 
 async function signupFormPost(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render("main-layout", {
+      page: "signup",
+      title: "Signup",
+      errors: errors.array(),
+    });
+  }
   try {
     const { fullname, username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);

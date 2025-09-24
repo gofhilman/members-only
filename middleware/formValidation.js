@@ -1,4 +1,5 @@
 const { body } = require("express-validator");
+const { getUserByUsername } = require("../db/queries");
 
 const validatePost = [
   body("title")
@@ -36,7 +37,16 @@ const validateSignup = [
     .withMessage(
       "You're registering, darling. That means choosing a name that slaps, " +
         "sparkles, and screams main character energy. Don't ghost us!"
-    ),
+    )
+    .custom(async (value) => {
+      const user = await getUserByUsername(value);
+      if (user) {
+        throw new Error(
+          "That username's already booked and busy, darling. Try something with more sparkle!"
+        );
+      }
+      return true;
+    }),
   body("password")
     .trim()
     .notEmpty()
