@@ -1,0 +1,22 @@
+<main>
+  <form action="/login" method="post">
+    <h2><%= title %></h2>
+    <% if (locals.path) { switch(path) { case "/post": %>
+    <p>Please log in to create a post</p>
+    <% break; case "/join": %>
+    <p>Log in first to apply for membership</p>
+    <% break; case "/admin": %>
+    <p>Please log in to apply for admin access</p>
+    <% } } %> <%- include("partials/errors.ejs") %> <% if (locals.message) { %>
+    <p><%= locals.message %></p>
+    <% } %>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required />
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required />
+    </div>
+    <button>Log in</button>
+  </form>
+  <p>Don't have an account? Sign up <a href="/signup">here</a>.</p>
+</main>

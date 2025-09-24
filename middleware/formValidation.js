@@ -67,7 +67,7 @@ const validateJoin = [
     .equals(process.env.MEMBER_PASSCODE)
     .withMessage(
       "That passcode's not it, darling. The lounge doesn't open for typos and guesses. " +
-        "Channel your inner VIP and try again"
+        "Channel your inner VIP and try again!"
     ),
 ];
 

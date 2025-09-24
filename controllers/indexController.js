@@ -10,47 +10,42 @@ const {
 } = require("../db/queries");
 const { validationResult } = require("express-validator");
 
-async function allPostsGet(req, res) {
+async function allPostsGet(_, res) {
   const posts = await getAllPosts();
   res.render("main-layout", {
     posts,
-    user: req.user,
     page: "index",
     title: "Home",
   });
 }
 
-async function postFormGet(req, res) {
+async function postFormGet(_, res) {
   res.render("main-layout", {
-    user: req.user,
     page: "post",
     title: "Create a new post",
   });
 }
 
-async function loginFormGet(req, res) {
-  res.render("main-layout", { user: req.user, page: "login", title: "Login" });
+async function loginFormGet(_, res) {
+  res.render("main-layout", { page: "login", title: "Login" });
 }
 
-async function signupFormGet(req, res) {
+async function signupFormGet(_, res) {
   res.render("main-layout", {
-    user: req.user,
     page: "signup",
     title: "Signup",
   });
 }
 
-async function joinFormGet(req, res) {
+async function joinFormGet(_, res) {
   res.render("main-layout", {
-    user: req.user,
     page: "join",
     title: "Become a member",
   });
 }
 
-async function adminFormGet(req, res) {
+async function adminFormGet(_, res) {
   res.render("main-layout", {
-    user: req.user,
     page: "admin",
     title: "Become an admin",
   });
@@ -66,7 +61,6 @@ async function postFormPost(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render("main-layout", {
-      user: req.user,
       page: "post",
       title: "Create a new post",
       errors: errors.array(),
@@ -81,7 +75,6 @@ async function loginFormPost(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render("main-layout", {
-      user: req.user,
       page: "login",
       title: "Login",
       errors: errors.array(),
@@ -91,7 +84,6 @@ async function loginFormPost(req, res, next) {
     if (err) return next(err);
     if (!user) {
       return res.render("main-layout", {
-        user: req.user,
         page: "login",
         title: "Login",
         message: info?.message || "Login failed",
@@ -108,7 +100,6 @@ async function signupFormPost(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render("main-layout", {
-      user: req.user,
       page: "signup",
       title: "Signup",
       errors: errors.array(),
@@ -128,7 +119,6 @@ async function joinFormPost(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render("main-layout", {
-      user: req.user,
       page: "join",
       title: "Become a member",
       errors: errors.array(),
@@ -142,7 +132,6 @@ async function adminFormPost(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render("main-layout", {
-      user: req.user,
       page: "admin",
       title: "Become an admin",
       errors: errors.array(),

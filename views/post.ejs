@@ -1,0 +1,26 @@
+<main>
+  <form action="/post" method="post">
+    <h2><%= title %></h2>
+    <%- include("partials/errors.ejs") %>
+    <div>
+      <label for="title">Post title</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Your post title"
+        required
+      />
+    </div>
+    <div>
+      <label for="content">Post content</label>
+      <textarea
+        name="content"
+        id="content"
+        placeholder="Your post content"
+        rows="10"
+      ></textarea>
+    </div>
+    <button>Post</button>
+  </form>
+</main>
