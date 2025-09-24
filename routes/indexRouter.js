@@ -12,6 +12,7 @@ const {
   signupFormPost,
   joinFormPost,
   adminFormPost,
+  aboutGet,
 } = require("../controllers/indexController");
 const {
   validatePost,
@@ -25,6 +26,7 @@ const isAuth = require("../middleware/auth");
 const indexRouter = Router();
 
 indexRouter.get("/", allPostsGet);
+indexRouter.get("/about", aboutGet);
 indexRouter.get("/post", isAuth, postFormGet);
 indexRouter.get("/login", loginFormGet);
 indexRouter.get("/signup", signupFormGet);

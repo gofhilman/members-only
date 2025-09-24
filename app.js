@@ -32,10 +32,6 @@ app.use(
 require("./config/passport");
 app.use(passport.session());
 
-app.use((req, res, next) => {
-  res.locals.user = req.user;
-  next();
-});
 app.use(indexRouter);
 
 app.use((err, _, res, __) => {

@@ -10,41 +10,49 @@ const {
 } = require("../db/queries");
 const { validationResult } = require("express-validator");
 
-async function allPostsGet(_, res) {
+async function allPostsGet(req, res) {
   const posts = await getAllPosts();
   res.render("main-layout", {
     posts,
+    user: req.user,
     page: "index",
     title: "Home",
   });
 }
 
-async function postFormGet(_, res) {
+function aboutGet(_, res) {
+  res.render("main-layout", {
+    page: "about",
+    title: "About",
+  });
+}
+
+function postFormGet(_, res) {
   res.render("main-layout", {
     page: "post",
     title: "Create a new post",
   });
 }
 
-async function loginFormGet(_, res) {
+function loginFormGet(_, res) {
   res.render("main-layout", { page: "login", title: "Login" });
 }
 
-async function signupFormGet(_, res) {
+function signupFormGet(_, res) {
   res.render("main-layout", {
     page: "signup",
     title: "Signup",
   });
 }
 
-async function joinFormGet(_, res) {
+function joinFormGet(_, res) {
   res.render("main-layout", {
     page: "join",
     title: "Become a member",
   });
 }
 
-async function adminFormGet(_, res) {
+function adminFormGet(_, res) {
   res.render("main-layout", {
     page: "admin",
     title: "Become an admin",
@@ -71,7 +79,7 @@ async function postFormPost(req, res) {
   res.redirect("/");
 }
 
-async function loginFormPost(req, res, next) {
+function loginFormPost(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render("main-layout", {
@@ -143,6 +151,7 @@ async function adminFormPost(req, res) {
 
 module.exports = {
   allPostsGet,
+  aboutGet,
   postFormGet,
   loginFormGet,
   signupFormGet,
