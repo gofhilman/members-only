@@ -2,13 +2,13 @@
   <form action="/login" method="post">
     <h2 class="page-title"><%= title %></h2>
     <% if (locals.path) { switch(path) { case "/post": %>
-    <p>Please log in to create a post</p>
+    <p class="error-msg">Please log in to create a post</p>
     <% break; case "/join": %>
-    <p>Log in first to apply for membership</p>
+    <p class="error-msg">Log in first to apply for membership</p>
     <% break; case "/admin": %>
-    <p>Please log in to apply for admin access</p>
+    <p class="error-msg">Please log in to apply for admin access</p>
     <% } } %> <%- include("partials/errors.ejs") %> <% if (locals.message) { %>
-    <p><%= message %></p>
+    <p class="error-msg"><%= message %></p>
     <% } %>
     <div class="form-body">
       <label for="username">Username</label>
