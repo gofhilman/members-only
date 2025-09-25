@@ -9,10 +9,12 @@ const {
   updateAdmin,
 } = require("../db/queries");
 const { validationResult } = require("express-validator");
+const formatTime = require("../utils/formatTime");
 
 async function allPostsGet(req, res) {
   const posts = await getAllPosts();
   res.render("main-layout", {
+    formatTime,
     posts,
     user: req.user,
     page: "index",
