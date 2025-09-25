@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %> - Members Only</title>
     <link rel="icon" type="image/svg+xml" href="/images/waypoints.svg" />
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <script>
+      const isLoggedIn = <%= !!locals.user %>
+    </script>
     <script type="module" src="/modules/main.js" defer></script>
   </head>
   <body>
-    <%- include("partials/header") %>
-    <%- include(page) %>
-    <%- include("partials/footer") %>
+    <%- include("partials/header") %> <%- include(page) %> <%-
+    include("partials/footer") %>
   </body>
 </html>
