@@ -1,9 +1,11 @@
 <main>
   <form action="/join" method="post">
-    <h2><%= title %></h2>
+    <h2 class="page-title"><%= title %></h2>
     <%- include("partials/errors.ejs") %>
     <div>
-      <label for="passcode">Enter the member passcode to become a member:</label>
+      <label for="passcode"
+        >Enter the member passcode to become a member:</label
+      >
       <input type="password" name="passcode" id="passcode" required />
     </div>
     <button>Submit</button>

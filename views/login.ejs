@@ -1,6 +1,6 @@
 <main>
   <form action="/login" method="post">
-    <h2><%= title %></h2>
+    <h2 class="page-title"><%= title %></h2>
     <% if (locals.path) { switch(path) { case "/post": %>
     <p>Please log in to create a post</p>
     <% break; case "/join": %>
@@ -10,7 +10,7 @@
     <% } } %> <%- include("partials/errors.ejs") %> <% if (locals.message) { %>
     <p><%= message %></p>
     <% } %>
-    <div>
+    <div class="form-body">
       <label for="username">Username</label>
       <input type="text" name="username" id="username" required />
       <label for="password">Password</label>

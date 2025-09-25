@@ -2,7 +2,7 @@
   <% if (locals.user) { %>
   <form action="/post"><button>Create a new post</button></form>
   <% if(!user.admin) { %>
-  <div>
+  <div class="announcement">
     <h3>Important!</h3>
     <ul>
       <% if(!user.member) { %>
@@ -12,7 +12,8 @@
       </li>
       <% } %>
       <li>
-        <a href="/admin">Become an admin</a> to gain the ability to delete posts
+        <a href="/admin">Become an admin</a> to gain the ability to delete
+        posts.
       </li>
     </ul>
   </div>
@@ -21,17 +22,21 @@
   <% } %>
   <div>
     <% posts.forEach((post) => { %>
-    <article>
+    <article class="post">
       <p>
-        By: <%= locals.user?.member || locals.user?.admin ? post.fullname :
-        "***" + " ***" %>
+        <b>
+          By: <%= locals.user?.member || locals.user?.admin ? post.fullname :
+          "***" + " ***" %>
+        </b>
       </p>
       <h2><%= post.title %></h2>
-      <p><%- post.content.replace(/\n/g, "<br>") %></p>
-      <div>
+      <p><%- post.content.replace(/\n/g, "<br />") %></p>
+      <div class="post-info">
         <p>
-          <%= locals.user?.member || locals.user?.admin ?
-          formatTime(post.timestamp) : ("(Posting time is hidden)") %>
+          <b>
+            <%= locals.user?.member || locals.user?.admin ?
+            formatTime(post.timestamp) : ("(Posting time is hidden)") %>
+          </b>
         </p>
         <% if(locals.user?.admin) { %>
         <form action="<%= `/${post.id}/delete` %>" method="post">

@@ -1,6 +1,6 @@
 <main>
   <form action="/post" method="post">
-    <h2><%= title %></h2>
+    <h2 class="page-title"><%= title %></h2>
     <%- include("partials/errors.ejs") %>
     <div>
       <label for="title">Post title</label>
@@ -18,7 +18,7 @@
         name="content"
         id="content"
         placeholder="Your post content"
-        rows="10"
+        rows="20"
       ></textarea>
     </div>
     <button>Post</button>

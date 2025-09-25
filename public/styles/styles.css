@@ -39,3 +39,176 @@ img {
 }
 
 /* custom */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 10px 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(19, 19, 19);
+  color: white;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+main {
+  padding: 40px 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  background-color: rgb(19, 19, 19);
+  color: white;
+  padding-block: 3px;
+}
+
+label {
+  display: block;
+  font-size: 1.2rem;
+}
+
+input {
+  min-width: 300px;
+  padding: 4px 8px;
+}
+
+textarea {
+  min-width: 600px;
+  resize: none;
+  padding: 4px 8px;
+}
+
+button {
+  cursor: pointer;
+  padding: 6px 25px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+form > div {
+  padding-block: 10px;
+}
+
+form > button {
+  font-size: 1.2rem;
+  margin-block: 10px;
+}
+
+nav > ul {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 1.4rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  padding-block: 5px;
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.post {
+  padding: 10px 20px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.post:not(:first-child) {
+  border-top: 1px solid rgb(19, 19, 19);
+}
+
+.post h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.error-msg {
+  color: red;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.error-details {
+  color: red;
+}
+
+.form-body {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 15px 30px;
+}
+
+.announcement {
+  color: white;
+  background-color: rgb(19, 19, 19);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.announcement > h3 {
+  color: #FF69B4;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.announcement a{
+  color: #00BFFF;
+}
+
+.post-info {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.post-info button {
+  padding: 2px 15px;
+  font-size: 1.1rem;
+  margin-block: 2px;
+}
+
+@media (max-width: 600px) {
+  header {
+    padding-inline: 20px;
+  }
+
+  main {
+    padding-inline: 30px;
+  }
+  
+  input {
+    min-width: 100%;
+  }
+
+  textarea {
+    min-width: 100%;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .form-body {
+    grid-template-columns: auto;
+    gap: 7px;
+  }
+}
