@@ -83,12 +83,14 @@ label {
 input {
   min-width: 300px;
   padding: 4px 8px;
+  margin-block: 10px;
 }
 
 textarea {
   min-width: 600px;
   resize: none;
   padding: 4px 8px;
+  margin-block: 10px;
 }
 
 button {
@@ -204,6 +206,10 @@ nav > ul {
   }
 
   textarea {
+    min-width: 100%;
+  }
+
+  .post-title {
     min-width: 100%;
   }
 

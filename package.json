@@ -4,6 +4,7 @@
     "dev": "node app.js --watch"
   },
   "dependencies": {
+    "@date-fns/tz": "^1.4.1",
     "bcryptjs": "^3.0.2",
     "connect-pg-simple": "^10.0.0",
     "date-fns": "^4.1.0",

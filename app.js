@@ -8,6 +8,7 @@ const passport = require("passport");
 const indexRouter = require("./routes/indexRouter");
 const app = express();
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -28,6 +29,13 @@ app.use(
     },
   })
 );
+app.post("/set-timezone", (req, _, next) => {
+  const newZone = req.body.timeZone;
+  if (req.session.timeZone !== newZone) {
+    req.session.timeZone = newZone;
+  }
+  next();
+});
 
 require("./config/passport");
 app.use(passport.session());

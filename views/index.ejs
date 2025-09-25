@@ -35,7 +35,7 @@
         <p>
           <b>
             <%= locals.user?.member || locals.user?.admin ?
-            formatTime(post.timestamp) : ("(Posting time is hidden)") %>
+            formatTime(post.timestamp, locals.timeZone) : ("(Posting time is hidden)") %>
           </b>
         </p>
         <% if(locals.user?.admin) { %>

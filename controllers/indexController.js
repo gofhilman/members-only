@@ -16,6 +16,7 @@ async function allPostsGet(req, res) {
   res.render("main-layout", {
     formatTime,
     posts,
+    timeZone: req.session?.timeZone || "UTC",
     user: req.user,
     page: "index",
     title: "Home",
