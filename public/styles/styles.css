@@ -114,6 +114,10 @@ nav > ul {
   font-size: 1.4rem;
 }
 
+.post-title {
+  min-width: 600px;
+}
+
 .page-title {
   font-size: 2rem;
   font-weight: 700;
