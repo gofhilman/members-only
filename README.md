@@ -17,6 +17,7 @@ Member passcode: BarbieBotAccess
 - **Validation**: Form inputs are validated to ensure data integrity.
 - **Authentication**: Secure login system using `passport.js` with session-based authentication.
 - **Responsive Design**: The application is mobile-friendly.
+- **User Local Time**: Posts are displayed with timestamps adjusted to the user's local time.
 
 ## Tech Stack
 
@@ -29,6 +30,7 @@ Member passcode: BarbieBotAccess
 - **CSS**: Custom styles with responsive design principles.
 - **date-fns**: Library for formatting timestamps.
 - **express-validator**: Middleware for validating and sanitizing form inputs.
+- **express-session**: Middleware for managing user sessions.
 
 ## Installation
 
